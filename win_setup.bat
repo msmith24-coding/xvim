@@ -1,10 +1,19 @@
 @echo off
 
+net session &gt; nul 2&gt;&amp;1
+if %errorlevel% equ 0 (
+    echo [ERR] This setup must be ran in Administrative Mode.
+    pause
+    exit /b 1
+)
+
 where choco >nul 2>nul
 if not %errorlevel% equ 0 (
     echo [ERR] Chocolatey is not installed or added to system path.
     echo [ERR] Try to install Chocolatey from Powershell in administrative shell.
     echo [ERR] https://chocolatey.org/install
+    
+    pause
     exit /b 1
 )
 
@@ -17,7 +26,8 @@ if not %errorlevel% equ 0 (
     where gcc >nul 2>nul
     if not %errorlevel% equ 0 (
         echo [ERR] Failed to install `gcc` from `mingw`.
-        exit /b 1
+        
+        pause
     )
 
     echo [INFO] `gcc` from `mingw` successfully installed.
@@ -32,7 +42,8 @@ if not %errorlevel% equ 0 (
     where make >nul 2>nul
     if not %errorlevel% equ 0 (
         echo [ERR] Failed to install `make` from `make`.
-        exit /b 1
+        
+        pause
     )
 
     echo [INFO] `make` from `make` successfully installed.
@@ -47,16 +58,16 @@ if not %errorlevel% equ 0 (
     where cmake >nul 2>nul
     if not %errorlevel% equ 0 (
         echo [ERR] Failed to install `cmake` from `cmake`.
-        exit /b 1
+        pause
     )
 
     echo [INFO] `cmake` from `cmake` successfully installed.
 )
 
 echo [INFO] All required libraries where found.
-echo [INFO] Continuing with setup...
-
-cmake -G "MinGW Makefiles"
-
 echo [INFO] XVIM has been setup and is ready for developer on Windows 10/11 platform.
+
+echo [INFO] Run the following command when you want to update the CMakeLists.txt:
+echo [INFO]     $ cmake -G "MinGW Makefiles" .
+
 pause

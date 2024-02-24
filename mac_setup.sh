@@ -48,11 +48,10 @@ if [! command -v cmake > /dev/null 2>&1]; then
 fi
 
 echo "[INFO] All required libraries where found."
-echo "[INFO] Continuing with setup..."
-
-cmake .
-
 echo "[INFO] XVIM has been setup and is ready for development on Mac platform."
+
+echo "[INFO] Run the following command when you want to update the CMakeLists.txt:"
+echo "[INFO]     $ cmake ."
 
 echo "Press RETURN to continue . . ."
 read -r
