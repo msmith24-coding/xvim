@@ -1,3 +1,7 @@
+# macOS ignores:
+.DS_Store
+
+# CMake ignores:
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
@@ -9,3 +13,12 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+
+# Binary ignores:
+xvim
+
+xvim.exe
+*.exe
+
+xvim.out
+*.out
